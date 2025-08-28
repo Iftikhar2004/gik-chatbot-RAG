@@ -1,32 +1,58 @@
 # GIKI Prospectus Q&A Chatbot using Retrieval-Augmented Generation (RAG)
 
-![GIKI Prospectus Cover](UG-Prospectus-2024.pdf) <!--
-A Retrieval-Augmented Generation (RAG) based chatbot for querying GIKI (Ghulam Ishaq Khan Institute of Engineering Sciences and Technology) documents, such as the UG Prospectus 2024, Fee Structure, and Academic Rules. Users can upload up to 5 documents (PDF, DOCX, TXT, etc.) and ask natural language questions. The system extracts text, embeds chunks using sentence-transformers, stores in FAISS, and generates answers via Llama3 on Groq API. Built with LangChain and a Gradio UI for easy interaction.
+A Retrieval-Augmented Generation (RAG)-based chatbot for querying **GIKI (Ghulam Ishaq Khan Institute of Engineering Sciences and Technology)** documents, such as the **UG Prospectus 2024**, **Fee Structure**, and **Academic Rules**.  
 
-This project fulfills the academic requirements for a RAG-based Q&A system, supporting English/Urdu toggle (placeholder for Urdu) and conversational memory.
+Users can upload up to **5 documents** (PDF, DOCX, TXT, PPTX, CSV, XLSX, etc.) and ask natural language questions.  
+The system:
+- Extracts text from documents  
+- Embeds chunks using **sentence-transformers**  
+- Stores embeddings in **FAISS**  
+- Generates answers using **Llama 3 on Groq API**  
 
-## Features
+Built with **LangChain** and a **Gradio UI** for easy interaction.  
+This project fulfills the academic requirements for a RAG-based Q&A system, supporting an English/Urdu toggle (Urdu placeholder included) and conversational memory.
 
-- **Document Ingestion**: Supports PDF (with PyMuPDF/PyPDF2/pdfplumber fallbacks), DOCX, TXT, PPTX, CSV, XLSX.
-- **Text Processing**: Semantic chunking (fallback to recursive splitting, 1000-token chunks).
-- **RAG Pipeline**: Embeddings with `all-MiniLM-L6-v2`, FAISS vector store, top-8 retrieval, Llama3-8b-8192 LLM via Groq.
-- **Interface**: Gradio web UI with file upload, chat window, language dropdown (English/Urdu), and clear button.
-- **Prompt Engineering**: Structured template to avoid hallucinations; answers formatted in Markdown (bullets, headings).
-- **Evaluation**: Tested with UG Prospectus 2024; accuracy assessed (e.g., 3/5 for fee queries due to minor hallucinations).
-- **Optional**: Urdu translation (placeholder); source metadata stored but not displayed in UI.
+---
 
-## Demo
+## 🚀 Features
 
-- Run locally: See "Setup" below.
-- Sample Query: "What is the fee structure for CS undergraduate?" → Retrieves and generates response from uploaded PDF.
+- **Document Ingestion**  
+  - Supports: PDF (PyMuPDF, PyPDF2, pdfplumber fallbacks), DOCX, TXT, PPTX, CSV, XLSX  
 
-## Project Structure
+- **Text Processing**  
+  - Semantic chunking (1000-token chunks, fallback to recursive splitting)  
 
+- **RAG Pipeline**  
+  - Embeddings: `all-MiniLM-L6-v2`  
+  - Vector Store: **FAISS**  
+  - Retrieval: Top-8 chunks  
+  - LLM: **Llama3-8b-8192** via Groq  
+
+- **Interface**  
+  - Gradio Web UI  
+  - File upload  
+  - Chat window  
+  - Language dropdown (English/Urdu)  
+  - Clear button  
+
+- **Prompt Engineering**  
+  - Structured template to minimize hallucinations  
+  - Markdown-formatted answers (headings, bullet points)  
+
+- **Evaluation**  
+  - Tested with **UG Prospectus 2024**  
+  - Accuracy: ~3/5 for fee queries (minor hallucinations observed)  
+
+- **Optional**  
+  - Urdu translation (placeholder only)  
+  - Source metadata stored but not displayed in UI  
+
+## 📂 Project Structure
 giki-chatbot/
-├── main.py # Core logic: Document loading, processing, RAG chain, chatbot response
+├── main.py                 # Core logic: document loading, RAG chain, chatbot response
 ├── interface/
-│ └── ui.py # Gradio UI components and styling
-├── requirements.txt # Dependencies
-├── UG-Prospectus-2024.pdf # Sample document (282 pages)
-├── README.md # This file
-└── .env # Environment variables (e.g., GROQ_API_KEY; add to .gitignore)
+│   └── ui.py               # Gradio UI components and styling
+├── requirements.txt        # Dependencies
+├── UG-Prospectus-2024.pdf  # Sample document (282 pages)
+├── README.md               # Documentation
+└── .env                    # Environment variables (e.g., GROQ_API_KEY; add to .gitignore)
