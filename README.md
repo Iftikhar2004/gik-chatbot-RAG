@@ -48,6 +48,8 @@ This project fulfills the academic requirements for a RAG-based Q&A system, supp
   - Source metadata stored but not displayed in UI  
 
 ## 📂 Project Structure
+
+```plaintext
 giki-chatbot/
 ├── main.py                 # Core logic: document loading, RAG chain, chatbot response
 ├── interface/
@@ -56,3 +58,5 @@ giki-chatbot/
 ├── UG-Prospectus-2024.pdf  # Sample document (282 pages)
 ├── README.md               # Documentation
 └── .env                    # Environment variables (e.g., GROQ_API_KEY; add to .gitignore)
+
+
